@@ -1,0 +1,8 @@
+<div class="container">
+  <h3><%= @still.title %></h3>
+  <pre><%= @slide.text %></pre>
+</div>
+
+<%= link_to "Edit Title", edit_user_still_path(@still) %>
+<%= link_to "Delete", user_still_path(current_user, @still), method: :delete, data: {confirm: 'Are You Sure'} %>
+<h1>Created By: <%= @still.user.first_name %></h1>

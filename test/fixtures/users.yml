@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ethan:
+  first_name: Ethan
+  last_name: Newbary
+  email: etanNewbary@gmail.com
+  password_digest: 123runner
+
+jannet:
+  first_name: Jannet
+  last_name: Roberts
+  email: jr@bvsd.org
+  password_digest: poopLife123

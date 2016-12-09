@@ -1,0 +1,17 @@
+<div class="container">
+
+  <h1>
+    <%= @user.first_name %> <%= @user.last_name %>
+    <%= link_to("LogOut", logout_path, method: "delete") %>
+  </h1>
+
+  <h2>
+    <%= link_to("create", new_user_still_path(current_user)) %>
+  </h2>
+
+  <% @user.still.all.each do |still| %>
+    <h3><%= link_to still.title, user_still_path(still) %></h3>
+    <pre><%= still.slide.text %></pre>
+  <% end %>
+
+</div>
