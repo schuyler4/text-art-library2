@@ -1,10 +1,15 @@
 <div class="container">
-  <% @still.errors.each do |msg| %>
-    <h3><%= msg %></h3>
-  <% end %>
+    <h1>Create A Title</h1>
+    <% @still.errors.each do |msg| %>
+      <h3><%= msg %></h3>
+    <% end %>
 
-  <%= form_for [@user, @user.still.build] do |f| %>
-    <%= f.text_field :title %>
-    <%= f.submit %>
-  <% end %>
+    <%= form_for [@user, @user.stills.build] do |f| %>
+      <div class="inputContainer">
+        <%= f.text_field :title, :class=>"form-control", :id=>"input" %>
+      </div>
+      <div class="">
+        <%= f.submit "Create Title" ,:class=>"btn btn-primary"%>
+      </div>
+    <% end %>
 </div>

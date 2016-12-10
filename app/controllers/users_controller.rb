@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @still = @user.still.all
+    @stills = @user.stills.all
   end
 
   def new

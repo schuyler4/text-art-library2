@@ -1,17 +1,24 @@
 <div class="container">
 
-  <h1>
-    <%= @user.first_name %> <%= @user.last_name %>
-    <%= link_to("LogOut", logout_path, method: "delete") %>
-  </h1>
+    <center>
+      <h1 class="nameHeader">
+        <%= @user.first_name %> <%= @user.last_name %>
+      </h1>
+    </center>
 
-  <h2>
-    <%= link_to("create", new_user_still_path(current_user)) %>
-  </h2>
+    <center>
+      <button class="btn btn-primary">
+        <%= link_to("LogOut", logout_path, method: "delete", :class=>"usrBtn") %>
+      </button>
 
-  <% @user.still.all.each do |still| %>
-    <h3><%= link_to still.title, user_still_path(still) %></h3>
-    <pre><%= still.slide.text %></pre>
-  <% end %>
+      <button class="btn btn-primary">
+        <%= link_to("create", new_user_still_path(current_user), :class=>"usrBtn") %>
+      </button>
+    </center>
+
+    <% @stills.each do |still| %>
+      <h3> <%= link_to still.title, user_still_path(@user, still) %> </h3>
+      <pre><%= still.slide.text %></pre>
+    <% end %>
 
 </div>

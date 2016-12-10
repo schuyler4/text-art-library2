@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Edit the Slide</h1>
+
+  <%= form_for [@user, @still, @slide] do |f| %>
+    <%= f.text_area :text, :id=> "artArea"%>
+    <br>
+    <%= f.submit :class=> "btn btn-primary"%>
+  <% end %>
+</div>

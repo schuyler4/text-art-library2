@@ -17,7 +17,7 @@ class StillsController < ApplicationController
 
   def create
     @user = current_user
-    @still = @user.still.create(still_params)
+    @still = @user.stills.create(still_params)
 
     if @still.save
       redirect_to new_user_still_slide_path(current_user, @still)
@@ -39,7 +39,7 @@ class StillsController < ApplicationController
   def destroy
     @still = Still.find(params[:id])
     @still.destroy
-    redirect_to user_path(current_user  )
+    redirect_to user_path(current_user)
   end
 
   private

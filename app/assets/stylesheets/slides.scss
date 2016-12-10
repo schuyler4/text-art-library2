@@ -1,3 +1,17 @@
 // Place all the styles related to the slides controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#artArea {
+  border: 2px solid black;
+  resize: none;
+  width: 600px;
+  height: 500px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+#seen {
+  width: 600px;
+  height: 500px;
+}

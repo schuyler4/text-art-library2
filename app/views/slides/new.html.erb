@@ -3,8 +3,17 @@
     <h3><%= msg %></h3>
   <% end %>
 
-  <%= form_for [@user, @still, @slide] do |f| %>
-    <%= f.text_area :text %>
-    <%= f.submit %>
-  <% end %>
+  <div class="container">
+    <center>
+      <h3>What You Type</h3>
+      <%= form_for [@user, @still, @slide] do |f| %>
+        <%= f.text_area :text, :id=> "artArea"%>
+        <br>
+        <%= f.submit :class=> "btn btn-primary"%>
+      <% end %>
+
+      <h3>What is seen </h3>
+      <pre id="seen"></pre>
+    </center>
+  </div>
 </div>

@@ -8,6 +8,12 @@ class SlidesController < ApplicationController
     @slide.build_still
   end
 
+  def edit
+    @user = current_user
+    @slide = Slide.find(params[:id])
+    @still = Still.find(params[:still_id])
+  end
+
   def create
     @user = User.find(params[:user_id])
     @still = Still.find(params[:still_id])
@@ -20,7 +26,18 @@ class SlidesController < ApplicationController
       render 'new'
     end
   end
-  
+
+  def update
+    @user = current_user
+    @still = Still.find(params[:still_id])
+    @slide = Slide.find(params[:id])
+
+    if @slide.update(slide_params)
+      redirect_to user_still_path(current_user, @still)
+    else
+      render 'edit'
+    end
+  end
 
   private
 

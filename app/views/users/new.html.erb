@@ -1,7 +1,27 @@
-<%= form_for(@user) do |f| %>
-  <%= f.text_field :first_name, :placeholder => "First name" %>
-   <%= f.text_field :last_name, :placeholder => "Last name" %>
-   <%= f.email_field :email, :placeholder => "Email" %>
-   <%= f.password_field :password, :placeholder => "Password" %>
-   <%= f.submit "Create an account", class: "btn-submit" %>
-<% end %>
+<div class="container">
+  <center>
+      <h1> Sign Up </h1>
+      <% @user.errors.each do |msg| %>
+        <h3><%= msg %></h3>
+      <% end %>
+      <%= form_for(@user) do |f| %>
+      <div id="inputContainer">
+        <%= f.text_field :first_name, :placeholder => "First name", :class=> "form-control", :id=> "input" %>
+        <br>
+      </div>
+      <div id="inputContainer">
+       <%= f.text_field :last_name, :placeholder => "Last name", :class=> "form-control", :id=> "input" %>
+       <br>
+     </div>
+     <div id="inputContainer">
+       <%= f.email_field :email, :placeholder => "Email", :class=> "form-control", :id=> "input" %>
+       <br>
+     </div>
+     <div id="inputContainer">
+       <%= f.password_field :password, :placeholder => "Password", :class=> "form-control", :id=> "input" %>
+       <br>
+     </div>
+       <%= f.submit "Create an account", class: "btn btn-primary" %>
+      <% end %>
+  </center>
+</div>

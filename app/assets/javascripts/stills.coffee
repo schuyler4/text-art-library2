@@ -3,7 +3,4 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  add_slide_btn = $('#addslide')
-
-  add_slide_btn.on 'click', ->
-    console.log("hello")
+  

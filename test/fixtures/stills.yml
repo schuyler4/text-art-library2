@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
+smile_face:
+  title: Smile Face
+  user: ethan
 
-two:
-  title: MyString
+sword:
+  title: Sword
+  user: jannet
