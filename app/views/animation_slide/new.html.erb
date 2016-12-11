@@ -1,0 +1,17 @@
+<div class="container">
+	<h1><%= @animation.title %></h1>
+	<h5>Add Slides</h5>
+
+	<% @slide.errors.each do |msg| %>
+      <h3><%= msg %></h3>
+    <% end %>
+
+	<%= form_for @slide, url: {:action => "create", controller: "animation_slide"} do |f| %>
+		<%= f.text_area :text %>
+		<%= f.submit %>
+	<% end %>
+
+	<%= link_to "edit title", edit_user_animation_path(@user, @animation) %> |
+	<%= link_to "delete", user_animation_path(@user, @animation), method: :delete, data: { 
+		confirm: 'are you sure you will half to start over' }%>
+</div>

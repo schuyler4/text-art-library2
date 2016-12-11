@@ -12,7 +12,11 @@
       </button>
 
       <button class="btn btn-primary">
-        <%= link_to("create", new_user_still_path(current_user), :class=>"usrBtn") %>
+        <%= link_to("create still", new_user_still_path(current_user), :class=>"usrBtn") %>
+      </button>
+
+      <button class="btn btn-primary">
+        <%= link_to("create animation", new_user_animation_path(current_user), :class=>"usrBtn") %>
       </button>
     </center>
 

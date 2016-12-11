@@ -1,5 +1,5 @@
 class SlidesController < ApplicationController
-  before_action(:require_user)
+  before_action :require_user
 
   def new
     @user = User.find(params[:user_id])
@@ -32,10 +32,14 @@ class SlidesController < ApplicationController
     @still = Still.find(params[:still_id])
     @slide = Slide.find(params[:id])
 
-    if @slide.update(slide_params)
-      redirect_to user_still_path(current_user, @still)
+    if current_user == @user
+      if @slide.update(slide_params)
+        redirect_to user_still_path(current_user, @still)
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_to user_path(current_user)
     end
   end
 

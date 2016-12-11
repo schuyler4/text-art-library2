@@ -1,5 +1,6 @@
 class StillsController < ApplicationController
-  before_action(:require_user)
+  before_action :require_user
+  #before_action :require_editor, only: [:edit, :update, :destroy]
 
   def show
     @still = Still.find(params[:id])
@@ -13,6 +14,10 @@ class StillsController < ApplicationController
 
   def edit
     @still = Still.find(params[:id])
+
+    if @still.user.id != current_user.id
+      redirect_to user_path(current_user)
+    end
   end
 
   def create
@@ -29,17 +34,25 @@ class StillsController < ApplicationController
   def update
     @still = Still.find(params[:id])
 
-    if @still.update(still_params)
-      redirect_to user_still_path(@still)
+    if @still.user == current_user
+      if @still.update(still_params)
+        redirect_to user_still_path(@still)
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_to user_path(current_user)
     end
   end
 
   def destroy
-    @still = Still.find(params[:id])
-    @still.destroy
-    redirect_to user_path(current_user)
+    if @still.user.id == current_user.id
+      @still = Still.find(params[:id])
+      @still.destroy
+      redirect_to user_path(current_user)
+    else 
+      redirect_to user_path(current_user)
+    end
   end
 
   private

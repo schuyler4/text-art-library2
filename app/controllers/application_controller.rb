@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
   helper_method :current_user
 
   def current_user
@@ -9,4 +10,9 @@ class ApplicationController < ActionController::Base
   def require_user
     redirect_to login_path unless current_user
   end
+
+  def require_editor
+  	redirect_to user_path(current_user) unless current_user.editor 
+  end
+
 end

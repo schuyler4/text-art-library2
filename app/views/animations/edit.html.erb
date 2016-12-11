@@ -1,0 +1,8 @@
+<div class="container">
+	<h1>Edit Title</h1>
+
+	<%= form_for [@user, @animation] do |f| %>
+		<%= f.text_field :title %>
+		<%= f.submit "Save Title" %>
+	<% end %>
+</div>

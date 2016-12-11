@@ -1,0 +1,2 @@
+module AnimationSlideHelper
+end

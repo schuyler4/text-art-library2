@@ -6,6 +6,14 @@ Rails.application.routes.draw do
     resources :stills do
       resources :slides
     end
+    
+    resources :animations do
+      resources :animation_slide
+    end
+
+    member do
+      get :confirm_email
+    end
   end
 
   get 'login' => 'sessions#new'
