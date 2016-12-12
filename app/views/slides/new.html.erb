@@ -1,12 +1,13 @@
 <div class="container">
-  <% @slide.errors.each do |msg| %>
-    <h3><%= msg %></h3>
-  <% end %>
 
   <div class="container">
     <center>
       <h3>What You Type</h3>
-      <%= form_for [@user, @still, @slide] do |f| %>
+      <%= form_for [@user, @animation, @slide] do |f| %>
+      <% @slide.errors.each do |msg| %>
+        <h3><%= msg %></h3>
+      <% end %>
+
         <%= f.text_area :text, :id=> "artArea"%>
         <br>
         <%= f.submit :class=> "btn btn-primary"%>
@@ -15,5 +16,21 @@
       <h3>What is seen </h3>
       <pre id="seen"></pre>
     </center>
+    <h1> all the slides </h1>
+    <ul id="slidesList">
+      <% if @animation.slides %>
+        <% @animation.slides.all.each do |slide| %>
+          <li id="slideItem">
+            <%= link_to slide.text,
+               edit_user_animation_slide_path(@user, @animation, slide) %>
+          </li>
+        <% end %>
+      <% end %>
+      <% if  @animation.slides.all[0] %>
+        <h1> Play Your animation </h1>
+        <pre id="show"><%= @animation.slides.all[0].text %></pre>
+        <button id="playButton"> Play </button>
+      <% end %>
+    </ul>
   </div>
 </div>

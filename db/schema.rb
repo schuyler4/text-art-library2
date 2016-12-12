@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211052036) do
+ActiveRecord::Schema.define(version: 20161212062515) do
 
   create_table "animations", force: :cascade do |t|
     t.string   "title"
@@ -23,12 +23,10 @@ ActiveRecord::Schema.define(version: 20161211052036) do
 
   create_table "slides", force: :cascade do |t|
     t.text     "text"
-    t.integer  "still_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "animation_id"
     t.index ["animation_id"], name: "index_slides_on_animation_id"
-    t.index ["still_id"], name: "index_slides_on_still_id"
   end
 
   create_table "stills", force: :cascade do |t|
@@ -36,6 +34,7 @@ ActiveRecord::Schema.define(version: 20161211052036) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.text     "text"
     t.index ["user_id"], name: "index_stills_on_user_id"
   end
 

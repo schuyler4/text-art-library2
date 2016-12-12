@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
     @stills = @user.stills.all
+    @animations = @user.animations.all
   end
 
   def new
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
     if user
       user.email_active
       redirect_to user_path(user)
-    else 
+    else
       redirect_to root_url
     end
   end

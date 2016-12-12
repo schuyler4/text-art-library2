@@ -1,5 +1,12 @@
 class AnimationsController < ApplicationController
 	before_action :require_user
+	before_action :require_permission, only: [:edit, :update, :destroy]
+
+	def require_permission
+		if current_user != Animation.find(params[:id]).user
+			redirect_to root_path
+		end
+	end
 
 	def new
 		@user = current_user
@@ -11,13 +18,17 @@ class AnimationsController < ApplicationController
 		@animation = Animation.find(params[:id])
 	end
 
+	def show
+		@animation = Animation.find(params[:id])
+	end
+
 	def create
 		@user = current_user
 		@animation = @user.animations.create(animation_params)
 
 		if @animation.save
-			redirect_to new_user_animation_animation_slide_path(@user, @animation)
-		else 
+			redirect_to new_user_animation_slide_path(@user, @animation)
+		else
 			render 'new'
 		end
 	end
@@ -28,7 +39,7 @@ class AnimationsController < ApplicationController
 
 		if @animation.update(animation_params)
 			redirect_to new_user_animation_animation_slide_path(@user,@animation)
-		else 
+		else
 			render 'edit'
 		end
 	end

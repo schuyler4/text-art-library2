@@ -7,11 +7,11 @@
 
 ======[]Second Deploy=======
 []add email verification
-[]add animated art
+[x]add animated art
 []add search to find other people art
-[]make it so you can't edit other people art
+[x]make it so you can't edit other people art
 []test all added stuff
+[]fix bug with deleteing stills delets users
 
 ======[]Third Deploy========
-[]search other peoples art
 []adds?

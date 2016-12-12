@@ -1,3 +1,4 @@
+
 <div class="container">
 	<h1><%= @animation.title %></h1>
 	<h5>Add Slides</h5>
@@ -12,6 +13,6 @@
 	<% end %>
 
 	<%= link_to "edit title", edit_user_animation_path(@user, @animation) %> |
-	<%= link_to "delete", user_animation_path(@user, @animation), method: :delete, data: { 
+	<%= link_to "delete", user_animation_path(@user, @animation), method: :delete, data: {
 		confirm: 'are you sure you will half to start over' }%>
 </div>

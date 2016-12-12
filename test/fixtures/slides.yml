@@ -2,8 +2,8 @@
 
 smile_face_slide:
   text: :)
-  still: smile_face
+  animation: one
 
 sword_slide:
   text: 0==|Dxxxxxxxxx>
-  still: sword
+  animation: two

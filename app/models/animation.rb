@@ -6,17 +6,14 @@ class Animation < ApplicationRecord
 
 	validates :title, presence: true
 
-	def editor?
-  		self.user.id == current_user.id
-  	end
+	def add_slides
+		self.slides += 1
+	end
 
-  	def add_slides
-  		self.slides += 1
-  	end
+  private
 
-  	private
+  def set_slides
+  	self.slides ||= 0
+  end
 
-  	def set_slides
-  		self.slides ||= 0
-  	end
 end

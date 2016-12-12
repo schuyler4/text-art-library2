@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	#before_create :confirm_token	
+	#before_create :confirm_token
 	before_save { self.email = email.downcase }
 
 	has_secure_password

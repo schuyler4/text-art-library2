@@ -3,12 +3,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'signup' => 'users#new'
   resources :users do
-    resources :stills do
-      resources :slides
-    end
-    
+    resources :stills
+
     resources :animations do
-      resources :animation_slide
+      resources :slides
     end
 
     member do

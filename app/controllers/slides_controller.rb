@@ -1,27 +1,32 @@
 class SlidesController < ApplicationController
   before_action :require_user
+  before_action :require_permission, only: [:update, :edit]
+
+  def require_permission
+    if current_user != Slide.find(params[:id]).animation.user
+      redirect_to root_path
+    end
+  end
 
   def new
-    @user = User.find(params[:user_id])
-    @still = Still.find(params[:still_id])
-    @slide = Slide.new
-    @slide.build_still
+    @user = current_user
+    @animation = Animation.find(params[:animation_id])
+    @slide = @animation.slides.build
   end
 
   def edit
     @user = current_user
+    @animation = Animation.find(params[:animation_id])
     @slide = Slide.find(params[:id])
-    @still = Still.find(params[:still_id])
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @still = Still.find(params[:still_id])
-    @slide = Slide.create(slide_params)
-    @slide.still = @still
+    @user = current_user
+    @animation = Animation.find(params[:animation_id])
+    @slide = @animation.slides.create(slide_params)
 
     if @slide.save
-      redirect_to user_still_path(current_user, @still)
+      redirect_to new_user_animation_slide_path(@user, @animation)
     else
       render 'new'
     end
@@ -29,17 +34,13 @@ class SlidesController < ApplicationController
 
   def update
     @user = current_user
-    @still = Still.find(params[:still_id])
+    @animation = Animation.find(params[:animation_id])
     @slide = Slide.find(params[:id])
 
-    if current_user == @user
-      if @slide.update(slide_params)
-        redirect_to user_still_path(current_user, @still)
-      else
-        render 'edit'
-      end
+    if @slide.update(slide_params)
+      redirect_to new_user_animation_slide_path(@user, @animation)
     else
-      redirect_to user_path(current_user)
+      render 'new'
     end
   end
 

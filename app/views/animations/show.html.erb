@@ -1,0 +1,12 @@
+<div class="container">
+  <h1><%= @animation.title %></h1>
+  <ul>
+    <% @animation.slides.all.each do |slide| %>
+      <li> <pre><%= slide.text %></pre></li>
+    <% end %>
+  </ul>
+  <pre id="show">
+    <%= @animation.slides.all[0].text %>
+  </pre>
+  <button id="play">Play</button>
+</div>

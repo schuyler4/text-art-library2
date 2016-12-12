@@ -36,18 +36,9 @@ class UserTest < ActiveSupport::TestCase
     assert_not users(:ethan).valid?
   end
 
-  test "email validation should accept valid address" do
-    valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
-      first.last@foo.jp alice+bob@baz.cn]
-
-    valid_addresses.each do |address|
-      users(:ethan).email = address
-      assert users(:ethan).valid?
-    end
-  end
-
   test "password should be present" do
-    users(:jannet).password_ = " "
+    users(:jannet).password = " "
+    assert_not users(:jannet).valid?
   end
 
 end

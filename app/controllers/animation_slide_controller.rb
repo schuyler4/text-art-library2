@@ -1,5 +1,13 @@
+=begin
 class AnimationSlideController < ApplicationController
 	before_action :require_user
+	before_filter :require_permission, only: :edit :update
+
+	def require_permission
+		if current_user != Slide.find(params[:id]).user
+			redirect_to root_path
+		end
+	end
 
 	def new
 		@user = User.find(params[:user_id])
@@ -32,7 +40,7 @@ class AnimationSlideController < ApplicationController
 
 		if @slide.save
 			redirect_to new_user_animation_slide_path(@animation)
-		else 
+		else
 			render 'edit'
 		end
 	end
@@ -43,3 +51,4 @@ class AnimationSlideController < ApplicationController
 		params.require(:slide).permit(:text)
 	end
 end
+= end

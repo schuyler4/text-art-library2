@@ -7,9 +7,8 @@
     <%= form_for [@user, @user.stills.build] do |f| %>
       <div class="inputContainer">
         <%= f.text_field :title, :class=>"form-control", :id=>"input" %>
+        <%= f.text_area :text %>
       </div>
-      <div class="">
-        <%= f.submit "Create Title" ,:class=>"btn btn-primary"%>
-      </div>
+      <%= f.submit "Create Art" ,:class=>"btn btn-primary"%>
     <% end %>
 </div>
