@@ -1,5 +1,4 @@
 <div class="container">
-
     <center>
       <h1 class="nameHeader">
         <%= @user.first_name %> <%= @user.last_name %>
@@ -17,6 +16,10 @@
 
       <button class="btn btn-primary">
         <%= link_to("create animation", new_user_animation_path(current_user), :class=>"usrBtn") %>
+      </button>
+
+      <button class="btn btn-primary">
+        <%= link_to "brows art", user_stills_path(@user), :class=>"usrBtn" %>
       </button>
     </center>
 

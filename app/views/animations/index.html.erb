@@ -1,6 +1,6 @@
 <div class="container">
-  <h1>Stills</h1>
-  <% @stills.each do |still| %>
+  <h1>Animations</h1>
+  <% @animations.each do |animation| %>
       <h1> <%= link_to still.title, user_still_path(@user, still) %> </h1>
   <% end %>
 </div>

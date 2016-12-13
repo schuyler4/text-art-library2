@@ -3,6 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   test "a valid user" do
+    puts users(:jannet).email_confirmed
     assert users(:jannet).valid?
   end
 

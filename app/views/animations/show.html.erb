@@ -1,6 +1,7 @@
 <div class="container">
   <h1><%= @animation.title %></h1>
-  <ul>
+  <button id="showSlides">Show Slides</button>
+  <ul id="slides">
     <% @animation.slides.all.each do |slide| %>
       <li> <pre><%= slide.text %></pre></li>
     <% end %>

@@ -5,9 +5,13 @@ ethan:
   last_name: Newbary
   email: etanNewbary@gmail.com
   password_digest: 123runner
+  email_confirmed: true
+  confirm_token: sadf
 
 jannet:
   first_name: Jannet
   last_name: Roberts
   email: jr@bvsd.org
   password_digest: poopLife123
+  email_confirmed: true
+  confirm_token: fasd

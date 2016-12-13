@@ -10,5 +10,5 @@ class AnimationTest < ActiveSupport::TestCase
   	animations(:one).title = " "
     assert_not animations(:one).valid?
   end
-  
+
 end

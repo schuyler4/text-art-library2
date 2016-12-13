@@ -5,6 +5,17 @@
 $(document).ready ->
   input = $('#artArea')
   output = $('#seen')
+  slides = $('#slides')
+  showSlides = $('#showSlides')
+
+  slidesHiding = false
+  toggleSlides = ->
+    if slidesHiding
+      slides.show()
+      slidesHiding = false
+    else
+      slides.hide()
+      slidesHiding = true
 
   input.keyup (e) ->
     console.log(input.val())
@@ -35,3 +46,6 @@ $(document).ready ->
   playButton = $('#playButton')
   playButton.click ->
     playSlides()
+
+  showSlides.click ->
+    toggleSlides()

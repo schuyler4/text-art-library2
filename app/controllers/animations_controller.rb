@@ -13,6 +13,11 @@ class AnimationsController < ApplicationController
 		@animation = Animation.new
 	end
 
+	def index
+		@user = current_user
+		@animations = Animation.all
+	end
+
 	def edit
 		@user = current_user
 		@animation = Animation.find(params[:id])

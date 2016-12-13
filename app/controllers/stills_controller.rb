@@ -12,6 +12,11 @@ class StillsController < ApplicationController
     @still = Still.find(params[:id])
   end
 
+  def index
+    @user = current_user
+    @stills = Still.all
+  end
+
   def new
     @user = current_user
     @still = Still.new

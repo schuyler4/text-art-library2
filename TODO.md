@@ -7,7 +7,8 @@
 
 ======[]Second Deploy=======
 []add email verification
-[x]add animated art
+[]add animated art
+	-[]fix bug with link_to
 []add search to find other people art
 [x]make it so you can't edit other people art
 []test all added stuff

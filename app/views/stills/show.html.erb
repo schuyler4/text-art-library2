@@ -2,7 +2,7 @@
 	<h3><%= @still.title %></h3>
 	<pre><%= @still.text %></pre>
 
-	<% if current_user.id == @still.user.id %>
+	<% if current_user == @still.user %>
 		<%= link_to "Edit Title", edit_user_still_path(@still) %> |
 		<%= link_to "Delete", user_still_path(@still),
 		method: :delete, data: {confirm: 'Are You Sure'} %> |
