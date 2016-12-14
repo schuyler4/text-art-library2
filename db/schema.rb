@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212062515) do
+ActiveRecord::Schema.define(version: 20161214001433) do
 
   create_table "animations", force: :cascade do |t|
     t.string   "title"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(version: 20161212062515) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_animations_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "still_id"
+    t.integer  "animation_id"
+    t.index ["animation_id"], name: "index_comments_on_animation_id"
+    t.index ["still_id"], name: "index_comments_on_still_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "slides", force: :cascade do |t|

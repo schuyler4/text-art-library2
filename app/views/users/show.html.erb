@@ -23,26 +23,30 @@
       </button>
     </center>
 
-    <% if current_user == @user %>
-      <h1> Your Stills </h1>
-    <% else %>
-      <h1> <%= @user.first_name %>'s Stills </h1>
-    <% end %>
-    <% @stills.each do |still| %>
-      <h3> <%= link_to still.title, user_still_path(@user, still) %> </h3>
-      <pre><%= still.text %></pre>
+    <% if @stills.length > 0 %>
+      <% if current_user == @user %>
+        <h1> Your Stills </h1>
+      <% else %>
+        <h1> <%= @user.first_name %>'s Stills </h1>
+      <% end %>
+      <% @stills.each do |still| %>
+        <h3> <%= link_to still.title, user_still_path(@user, still) %> </h3>
+        <pre><%= still.text %></pre>
+      <% end %>
     <% end %>
 
-    <% if current_user == @user %>
-      <h1> Your Animations </h1>
-    <% else %>
-      <h1> <%= @user.first_name %>'s Animations </h1>
-    <% end %>
-    <% @animations.each do |art| %>
-      <h3>
-        <%= link_to art.title, user_animations_path(@user, art) %>
-      </h3>
-      <pre id="show"><%= art.slides.all[0].text %></pre>
+    <% if @animations.length > 0 %>
+      <% if current_user == @user %>
+        <h1> Your Animations </h1>
+      <% else %>
+        <h1> <%= @user.first_name %>'s Animations </h1>
+      <% end %>
+      <% @animations.each do |animation| %>
+        <h3>
+          <%= link_to animation.title, user_animations_path(@user, animation) %>
+        </h3>
+        <pre id="show"><%= animation.slides.all[0].text %></pre>
+      <% end %>
     <% end %>
 
 </div>

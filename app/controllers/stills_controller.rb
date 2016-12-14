@@ -9,7 +9,10 @@ class StillsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @still = Still.find(params[:id])
+    @comment = @still.comments.build
+    @comments = @still.comments.all.reverse
   end
 
   def index
@@ -50,6 +53,7 @@ class StillsController < ApplicationController
   def destroy
     @still = Still.find(params[:id])
     @still.destroy
+    
     redirect_to user_path(current_user)
   end
 

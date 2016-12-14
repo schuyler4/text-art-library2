@@ -1,5 +1,6 @@
 class Animation < ApplicationRecord
 	after_initialize :set_slides, unless: :persisted?
+	has_many :comments, :dependent=> :destroy
 
 	belongs_to :user
 	has_many :slides

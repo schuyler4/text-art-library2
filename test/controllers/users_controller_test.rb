@@ -2,27 +2,22 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
 
-  test "should get the signup page" do
-    get signup_path
+  test "should get nwe" do
+    get new_user_url
     assert_response :success
   end
 
-  #test "should sign up a user" do
-    #user = users(:ethan)
+  test "should create a user" do
+    assert_difference('User.count') do
+      post user_url, params: {user:{
+        first_name: "Ethan",
+        last_name: "Newbary",
+        email: "fdsafdasf@gmail.com",
+        password: "123runner",
+      }}
+    end
 
-    #post user_path, params: {user: {
-     # first_name: user.first_name,
-     # last_name: user.last_name,
-     # email: user.email,
-     # password_digest: user.password_digest
-    #}}
-
-   # assert_equal user.id, session[:user_id]
- # end
-
-  #test "should logout a user" do
-   # get '/logout  '
-   # assert_response :success
-  #end
+    assert_redirected_to user_path(w)
+  end
 
 end

@@ -10,4 +10,18 @@
     <%= @animation.slides.all[0].text %>
   </pre>
   <button id="play">Play</button>
+
+  <%= form_for [@user, @animation, @comment] do |f| %>
+    <%= f.text_area :body %>
+    <%= f.submit %>
+  <% end %>
+
+  <% @comments.each do |comment| %>
+    <h4><%= comment.user.first_name %></h4>
+    <p><%= comment.body %></p>
+    <% if current_user == @animation.user %>
+			<%= link_to "Delete Comment", user_animation_comment_path(@user, @animation, comment),
+				method: :delete, data: {confirm: 'Are You Sure'} %>
+		<% end %>
+  <% end %>
 </div>

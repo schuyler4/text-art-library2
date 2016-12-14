@@ -9,11 +9,21 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
       params: {user: {
         first_name: "oscar",
         last_name: "newton",
-        email: "bobowaffle@gmail.com",
-        password: "1234"
-        }}
+        email: "fdasfsadf@gmail.com",
+        password: "1234",
+      }}
+
+    get '/users/1'
+    assert_response :success
+
+  end
+
+  test "will redirect to login if not authenticated" do
+    get '/users/1'
     assert_response :redirect
     follow_redirect!
     assert_response :success
   end
+
+
 end

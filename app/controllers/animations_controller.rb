@@ -24,7 +24,10 @@ class AnimationsController < ApplicationController
 	end
 
 	def show
+		@user = current_user
 		@animation = Animation.find(params[:id])
+		@comment = @animation.comments.build
+		@comments = @animation.comments.all.reverse
 	end
 
 	def create

@@ -16,4 +16,9 @@ class StillTest < ActiveSupport::TestCase
     assert_not stills(:smile_face).valid?
   end
 
+  test "should not save without text" do
+    stills(:sword).text = " "
+    assert_not stills(:sword).valid?
+  end
+
 end

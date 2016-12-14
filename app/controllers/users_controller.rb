@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     if @user.save
       #UserMailer.registration_confirmation(@user).deliver
-      UserMailer.welcome_email(@user).deliver_now
+      #UserMailer.welcome_email(@user).deliver_now
       session[:user_id] = @user.id
       redirect_to root_url
     else

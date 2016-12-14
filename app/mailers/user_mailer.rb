@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
 	def welcome_email(user)
 		@user = user
-		@url = 'http://localhost:3000/signup'
-		mail(to: @user.email, subject: 'Welcome To text art ')
+		mail(:to => @user.email,
+		:subject => "Thanks For Signing up")
 	end
 end
