@@ -9,6 +9,7 @@
 		<%= link_to "Edit Text",
 		edit_user_still_path(current_user, @still) %>
 	<% end %>
+	| <%= link_to "Email It To Me", email_user_still_path(@user, @still) %>
 
 	<%= form_for [@user, @still, @comment] do |f| %>
 		<%= f.text_area :body %>

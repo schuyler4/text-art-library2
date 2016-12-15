@@ -4,10 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com %></h1>
-    <p>
-      You have successfully signed up to example.com,
-      To login to the site, just follow this link: 
-    </p>
+    <p> Hi <%= @user.first_name %> </p>
+    <p>Thanks for signing up</p>
+    <p>Click the link to confirm</p>
+    <%= confirm_email_user_url(@user.confirm_token) %>
   </body>
 </html>

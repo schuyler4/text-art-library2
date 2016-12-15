@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	#before_create :confirm_token
+	before_create :confirmation
 	before_save { self.email = email.downcase }
 
 	has_secure_password
@@ -17,4 +17,18 @@ class User < ApplicationRecord
 	format: { with: VALID_EMAIL_REGEX } , uniqueness: true
 
 	validates :password, presence: true, length: {minimum: 5, maximum: 50}
+
+	def email_active
+		self.email_confirmed = true
+		self.confirm_token
+		save!(:validate => false)
+	end
+
+	private
+
+	def confirmation
+		if self.confirm_token.blank?
+			self.confirm_token = SecureRandom.urlsafe_base64.to_s
+		end
+	end
 end

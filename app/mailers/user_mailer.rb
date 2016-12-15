@@ -3,7 +3,13 @@ class UserMailer < ApplicationMailer
 
 	def welcome_email(user)
 		@user = user
-		mail(:to => @user.email,
-		:subject => "Thanks For Signing up")
+		mail(:to => "marek.s.newton@gmail.com", :subject => "Confirm Your Account")
+	end
+
+	def still_email(user, still)
+		@user = user
+		@still = still
+
+		mail(:to => "marek.s.newton@gmail.com", :subject => @still.title)
 	end
 end

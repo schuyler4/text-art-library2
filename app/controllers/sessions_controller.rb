@@ -9,14 +9,10 @@ class SessionsController < ApplicationController
       if @user.email_confirmed
         session[:user_id] = @user.id
         redirect_to user_path(@user)
-      else 
-        #just for testing perpose should be taken out
-        session[:user_id] = @user.id
-        redirect_to user_path(@user)
-        #render 'new'
+      else
+        redirect_to root_path
       end
     else
-      flash[:danger] = 'something dident work right'
       render 'new'
     end
   end

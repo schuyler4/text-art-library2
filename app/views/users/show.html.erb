@@ -43,7 +43,7 @@
       <% end %>
       <% @animations.each do |animation| %>
         <h3>
-          <%= link_to animation.title, user_animations_path(@user, animation) %>
+          <%= link_to animation.title, user_animation_path(@user, animation) %>
         </h3>
         <pre id="show"><%= animation.slides.all[0].text %></pre>
       <% end %>

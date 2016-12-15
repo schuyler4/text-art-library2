@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SlideTest < ActiveSupport::TestCase
-  test "a valid slide" do
+  def test_slide
     assert slides(:smile_face_slide).valid?
   end
 end

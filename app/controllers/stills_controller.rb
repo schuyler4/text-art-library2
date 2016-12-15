@@ -15,6 +15,14 @@ class StillsController < ApplicationController
     @comments = @still.comments.all.reverse
   end
 
+  def email
+    @user = current_user
+    @still = Still.find(params[:id])
+    UserMailer.still_email(@user, @still).deliver_now
+
+    redirect_to user_still_path(@user, @still)
+  end
+
   def index
     @user = current_user
     @stills = Still.all
@@ -53,7 +61,7 @@ class StillsController < ApplicationController
   def destroy
     @still = Still.find(params[:id])
     @still.destroy
-    
+
     redirect_to user_path(current_user)
   end
 

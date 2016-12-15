@@ -2,11 +2,11 @@ require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
 
-  test "a valid comment" do
+  def test_comment
     assert comments(:one).valid?
   end
 
-  test "comment is not valid without body" do
+  def test_comment_body 
     comments(:one).body = " "
     assert_not comments(:one).valid?
   end
